@@ -6,6 +6,7 @@ import java.util.List;
 
 public class OnlineExamSystem {
     private static List<Question> questionBank = new ArrayList<>();
+    
 
     // Initialize the question bank with sample questions
     private static void initializeQuestionBank() {
@@ -19,6 +20,11 @@ public class OnlineExamSystem {
         questionBank.add(new Question("Which exception is thrown when dividing by zero in Java?", new String[]{"ArithmeticException", "NullPointerException", "NumberFormatException", "IOException"}, 1));
         questionBank.add(new Question("What is the keyword used to inherit a class in Java?", new String[]{"implement", "inherits", "extends", "super"}, 3));
         questionBank.add(new Question("Which package is automatically imported in every Java program?", new String[]{"java.util", "java.io", "java.lang", "java.net"}, 3));
+    }
+
+    public static void main(String[] args) {
+        initializeQuestionBank();
+        SwingUtilities.invokeLater(OnlineExamSystem::showMainMenu);
     }
 
 
