@@ -49,6 +49,17 @@ public class OnlineExamSystem {
         registerButton.setForeground(DARK_CLR);
         exitButton.setBackground(PRIMARY_CLR2);
         exitButton.setForeground(DARK_CLR);
+        
+        studentLoginButton.addActionListener(e -> {
+            mainMenuFrame.dispose();
+            showStudentLogin();
+        });
+
+        registerButton.addActionListener(e -> {
+            mainMenuFrame.dispose();
+            showRegistrationForm();
+        });
+
     }
 
 
