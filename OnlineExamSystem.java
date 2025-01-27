@@ -27,6 +27,30 @@ public class OnlineExamSystem {
         SwingUtilities.invokeLater(OnlineExamSystem::showMainMenu);
     }
 
+     // Main menu
+    private static void showMainMenu() {
+        JFrame mainMenuFrame = new JFrame("Online Exam System");
+        mainMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainMenuFrame.setSize(400, 300);
+        mainMenuFrame.getContentPane().setBackground(WHITE_CLR);
+
+        JLabel titleLabel = new JLabel("Online Exam System", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        titleLabel.setForeground(PRIMARY_CLR1); 
+
+        JButton studentLoginButton = new JButton("Student Login");
+        JButton registerButton = new JButton("Register");
+        JButton exitButton = new JButton("Exit");
+
+        
+        studentLoginButton.setBackground(PRIMARY_CLR2);
+        studentLoginButton.setForeground(DARK_CLR);
+        registerButton.setBackground(PRIMARY_CLR2);
+        registerButton.setForeground(DARK_CLR);
+        exitButton.setBackground(PRIMARY_CLR2);
+        exitButton.setForeground(DARK_CLR);
+    }
+
 
 }
 
