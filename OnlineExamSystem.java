@@ -62,6 +62,17 @@ public class OnlineExamSystem {
 
         exitButton.addActionListener(e -> System.exit(0));
 
+        JPanel panel = new JPanel(new GridLayout(4, 1, 10, 10));
+        panel.setBackground(WHITE_CLR);
+
+        panel.add(titleLabel);
+        panel.add(studentLoginButton);
+        panel.add(registerButton);
+        panel.add(exitButton); 
+
+        mainMenuFrame.add(panel);
+        mainMenuFrame.setVisible(true);
+
     }
 
 
