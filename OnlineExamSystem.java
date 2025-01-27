@@ -10,5 +10,8 @@ public class OnlineExamSystem {
 
 // Question class
 class Question {
+    private String questionText;
+    private String[] options;
+    private int correctOption;
     
 }
