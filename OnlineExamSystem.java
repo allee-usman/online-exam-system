@@ -13,5 +13,16 @@ class Question {
     private String questionText;
     private String[] options;
     private int correctOption;
-    
+
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public int getCorrectOption() {
+        return correctOption;
+    }
 }
