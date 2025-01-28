@@ -256,7 +256,35 @@ public class OnlineExamSystem {
         frame.setVisible(true);
     }
 
-     
+
+    private static void showResult() {
+        JFrame resultFrame = new JFrame("Exam Result");
+        resultFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        resultFrame.setSize(400, 300);
+        resultFrame.getContentPane().setBackground(WHITE_CLR); 
+
+        int totalQuestions = questionBank.size();
+        int obtainedMarks = score * 100 / totalQuestions;
+        String result = "Score: " + score + "/" + totalQuestions + " (" + obtainedMarks + "%)";
+        studentResults.add(currentUser  + ": " + result);
+
+        JLabel resultLabel = new JLabel(result, SwingConstants.CENTER);
+        resultLabel.setForeground(PRIMARY_CLR1); 
+        JButton backButton = new JButton("Back to Main Menu");
+
+        backButton.addActionListener(e -> {
+            resultFrame.dispose();
+            showMainMenu();
+        });
+
+        JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
+        panel.setBackground(WHITE_CLR); 
+        panel.add(resultLabel);
+        panel.add(backButton);
+
+        resultFrame.add(panel);
+        resultFrame.setVisible(true);
+    }
 
 }
 
