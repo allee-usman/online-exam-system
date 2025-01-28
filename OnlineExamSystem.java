@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OnlineExamSystem {
-    private static List<Question> questionBank = new ArrayList<>();
+    private static List<Question> questionBank = new ArrayList<>();private static List<String> studentUsernames = new ArrayList<>();
+    private static List<String> studentPasswords = new ArrayList<>();
+
     
 
     // Initialize the question bank with sample questions
@@ -74,6 +76,32 @@ public class OnlineExamSystem {
         mainMenuFrame.setVisible(true);
 
     }
+
+    private static void showExam() {
+
+        if (currentQuestionIndex >= questionBank.size()) {
+            showResult();
+            return;
+        }
+
+        Question currentQuestion = questionBank.get(currentQuestionIndex);
+
+        JFrame frame = new JFrame("Exam - Question " + (currentQuestionIndex + 1));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.getContentPane().setBackground(WHITE_CLR); 
+
+        JLabel questionLabel = new JLabel("<html>" + currentQuestion.getQuestionText() + "</html>");
+        questionLabel.setForeground(PRIMARY_CLR1); 
+        JRadioButton[] options = new JRadioButton[4];
+        ButtonGroup group = new ButtonGroup();
+        JPanel optionsPanel = new JPanel(new GridLayout(4, 1));
+        optionsPanel.setBackground(WHITE_CLR);
+
+        
+    }
+
+
 
 
 }
