@@ -164,21 +164,7 @@ public class OnlineExamSystem {
         backButton.setBackground(PRIMARY_CLR2);
         backButton.setForeground(DARK_CLR);
 
-
-        JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
-        panel.setBackground(WHITE_CLR);
-        panel.add(usernameLabel);
-        panel.add(usernameField);
-        panel.add(passwordLabel);
-        panel.add(passwordField);
-        panel.add(loginButton);
-        panel.add(backButton);
-
-        studentLoginFrame.add(panel);
-        studentLoginFrame.setVisible(true);
-    }
-
-      loginButton.addActionListener(e -> {
+         loginButton.addActionListener(e -> {
             String username = usernameField.getText();
             String password = new String(passwordField.getPassword());
 
@@ -199,6 +185,78 @@ public class OnlineExamSystem {
             studentLoginFrame.dispose();
             showMainMenu();
         });
+
+
+        JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
+        panel.setBackground(WHITE_CLR);
+        panel.add(usernameLabel);
+        panel.add(usernameField);
+        panel.add(passwordLabel);
+        panel.add(passwordField);
+        panel.add(loginButton);
+        panel.add(backButton);
+
+        studentLoginFrame.add(panel);
+        studentLoginFrame.setVisible(true);
+    }
+
+    private static void showExam() {
+
+        // check if all questions are answered
+        if (currentQuestionIndex >= questionBank.size()) {
+            showResult();
+            return;
+        }
+
+        Question currentQuestion = questionBank.get(currentQuestionIndex);
+
+        JFrame frame = new JFrame("Exam - Question " + (currentQuestionIndex + 1));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.getContentPane().setBackground(WHITE_CLR); 
+
+        JLabel questionLabel = new JLabel("<html>" + currentQuestion.getQuestionText() + "</html>");
+        questionLabel.setForeground(PRIMARY_CLR1);
+        // create radio buttons for options
+        JRadioButton[] options = new JRadioButton[4];
+        ButtonGroup group = new ButtonGroup();
+        JPanel optionsPanel = new JPanel(new GridLayout(4, 1));
+        optionsPanel.setBackground(WHITE_CLR); 
+
+        for (int i = 0; i < 4; i++) {
+            options[i] = new JRadioButton(currentQuestion.getOptions()[i]);
+            options[i].setBackground(WHITE_CLR); 
+            options[i].setForeground(DARK_CLR); 
+            group.add(options[i]);
+            optionsPanel.add(options[i]);
+        }
+
+        JButton nextButton = new JButton("Next");
+        nextButton.setBackground(PRIMARY_CLR2);
+        nextButton.setForeground(DARK_CLR);
+
+        nextButton.addActionListener(e -> {
+            for (int i = 0; i < 4; i++) {
+                if (options[i].isSelected()) {
+                    if (i + 1 == currentQuestion.getCorrectOption()) {
+                        score++;
+                    }
+                    break;
+                }
+            }
+            currentQuestionIndex++;
+            frame.dispose();
+            showExam();
+        });
+
+        frame.add(questionLabel, BorderLayout.NORTH);
+        frame.add(optionsPanel, BorderLayout.CENTER);
+        frame.add(nextButton, BorderLayout.SOUTH);
+
+        frame.setVisible(true);
+    }
+
+     
 
 }
 
