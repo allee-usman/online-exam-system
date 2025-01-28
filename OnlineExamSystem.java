@@ -5,9 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OnlineExamSystem {
+<<<<<<< HEAD
+    private static List<Question> questionBank = new ArrayList<>();private static List<String> studentUsernames = new ArrayList<>();
+    private static List<String> studentPasswords = new ArrayList<>();
+
+=======
     private static List<Question> questionBank = new ArrayList<>();
     private static List<String> studentUsernames = new ArrayList<>();
     private static List<String> studentPasswords = new ArrayList<>();
+>>>>>>> cd4cb1a1aaa744fb49e79c9b06ab7000b91f37b3
     
     private static final Color PRIMARY_CLR1 = new Color(0x143f40); 
     private static final Color PRIMARY_CLR2 = new Color(0xe0bb68);
@@ -194,10 +200,40 @@ public class OnlineExamSystem {
             }
         });
 
+<<<<<<< HEAD
         backButton.addActionListener(e -> {
             studentLoginFrame.dispose();
             showMainMenu();
         });
+=======
+
+    private static void showExam() {
+
+        if (currentQuestionIndex >= questionBank.size()) {
+            showResult();
+            return;
+        }
+
+        Question currentQuestion = questionBank.get(currentQuestionIndex);
+
+        JFrame frame = new JFrame("Exam - Question " + (currentQuestionIndex + 1));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.getContentPane().setBackground(WHITE_CLR); 
+
+        JLabel questionLabel = new JLabel("<html>" + currentQuestion.getQuestionText() + "</html>");
+        questionLabel.setForeground(PRIMARY_CLR1); 
+        JRadioButton[] options = new JRadioButton[4];
+        ButtonGroup group = new ButtonGroup();
+        JPanel optionsPanel = new JPanel(new GridLayout(4, 1));
+        optionsPanel.setBackground(WHITE_CLR);
+
+        
+    }
+
+
+
+>>>>>>> d8f1e3f6cb136f22641df288475f57d1847765bb
 
 }
 
