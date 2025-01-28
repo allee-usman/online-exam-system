@@ -177,9 +177,27 @@ public class OnlineExamSystem {
         studentLoginFrame.setVisible(true);
     }
 
+      loginButton.addActionListener(e -> {
+            String username = usernameField.getText();
+            String password = new String(passwordField.getPassword());
 
+            
+            int index = studentUsernames.indexOf(username);
+            if (index >= 0 && studentPasswords.get(index).equals(password)) {
+                currentUser  = username;
+                currentQuestionIndex = 0;
+                score = 0;
+                studentLoginFrame.dispose();
+                showExam();
+            } else {
+                JOptionPane.showMessageDialog(studentLoginFrame, "Invalid username or password.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
 
-
+        backButton.addActionListener(e -> {
+            studentLoginFrame.dispose();
+            showMainMenu();
+        });
 
 }
 
