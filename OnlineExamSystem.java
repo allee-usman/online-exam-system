@@ -5,15 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OnlineExamSystem {
-<<<<<<< HEAD
     private static List<Question> questionBank = new ArrayList<>();private static List<String> studentUsernames = new ArrayList<>();
     private static List<String> studentPasswords = new ArrayList<>();
 
-=======
-    private static List<Question> questionBank = new ArrayList<>();
-    private static List<String> studentUsernames = new ArrayList<>();
-    private static List<String> studentPasswords = new ArrayList<>();
->>>>>>> cd4cb1a1aaa744fb49e79c9b06ab7000b91f37b3
     
     private static final Color PRIMARY_CLR1 = new Color(0x143f40); 
     private static final Color PRIMARY_CLR2 = new Color(0xe0bb68);
@@ -206,6 +200,39 @@ public class OnlineExamSystem {
         ButtonGroup group = new ButtonGroup();
         JPanel optionsPanel = new JPanel(new GridLayout(4, 1));
         optionsPanel.setBackground(WHITE_CLR);
+
+
+        for (int i = 0; i < 4; i++) {
+            options[i] = new JRadioButton(currentQuestion.getOptions()[i]);
+            options[i].setBackground(WHITE_CLR); 
+            options[i].setForeground(DARK_CLR);
+            group.add(options[i]);
+            optionsPanel.add(options[i]);
+        }
+
+        JButton nextButton = new JButton("Next");
+        nextButton.setBackground(PRIMARY_CLR2);
+        nextButton.setForeground(DARK_CLR);
+
+        nextButton.addActionListener(e -> {
+            for (int i = 0; i < 4; i++) {
+                if (options[i].isSelected()) {
+                    if (i + 1 == currentQuestion.getCorrectOption()) {
+                        score++;
+                    }
+                    break;
+                }
+            }
+            currentQuestionIndex++;
+            frame.dispose();
+            showExam();
+        });
+
+        frame.add(questionLabel, BorderLayout.NORTH);
+        frame.add(optionsPanel, BorderLayout.CENTER);
+        frame.add(nextButton, BorderLayout.SOUTH);
+
+        frame.setVisible(true);
 
         
     }
