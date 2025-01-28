@@ -6,6 +6,8 @@ import java.util.List;
 
 public class OnlineExamSystem {
     private static List<Question> questionBank = new ArrayList<>();
+    private static List<String> studentUsernames = new ArrayList<>();
+    private static List<String> studentPasswords = new ArrayList<>();
     
 
     // Initialize the question bank with sample questions
@@ -74,6 +76,23 @@ public class OnlineExamSystem {
         mainMenuFrame.setVisible(true);
 
     }
+    
+    private static void showRegistrationForm() {
+        JFrame registrationFrame = new JFrame("Student Registration");
+        registrationFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        registrationFrame.setSize(400, 300);
+        registrationFrame.getContentPane().setBackground(WHITE_CLR); // Set background color
+
+        JLabel usernameLabel = new JLabel("Username:");
+        JTextField usernameField = new JTextField();
+        JLabel passwordLabel = new JLabel("Password:");
+        JPasswordField passwordField = new JPasswordField();
+        JButton registerButton = new JButton("Register");
+        JButton backButton = new JButton("Back");
+
+        
+    }
+
 
 
 }
