@@ -150,6 +150,41 @@ public class OnlineExamSystem {
         
     }
 
+    private static void showStudentLogin() {
+        JFrame studentLoginFrame = new JFrame("Student Login");
+        studentLoginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        studentLoginFrame.setSize(400, 300);
+        studentLoginFrame.getContentPane().setBackground(WHITE_CLR);
+
+        JLabel usernameLabel = new JLabel("Username:");
+        JTextField usernameField = new JTextField();
+        JLabel passwordLabel = new JLabel("Password:");
+        JPasswordField passwordField = new JPasswordField();
+        JButton loginButton = new JButton("Login");
+        JButton backButton = new JButton("Back");
+
+        //button colors
+        loginButton.setBackground(PRIMARY_CLR2);
+        loginButton.setForeground(DARK_CLR);
+        backButton.setBackground(PRIMARY_CLR2);
+        backButton.setForeground(DARK_CLR);
+
+
+        JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
+        panel.setBackground(WHITE_CLR);
+        panel.add(usernameLabel);
+        panel.add(usernameField);
+        panel.add(passwordLabel);
+        panel.add(passwordField);
+        panel.add(loginButton);
+        panel.add(backButton);
+
+        studentLoginFrame.add(panel);
+        studentLoginFrame.setVisible(true);
+    }
+
+
+
 
     private static void showExam() {
 
