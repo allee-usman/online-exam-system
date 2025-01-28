@@ -113,6 +113,27 @@ public class OnlineExamSystem {
             }
         });
 
+        backButton.addActionListener(e -> {
+            registrationFrame.dispose();
+            showMainMenu();
+        });
+
+        
+        JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
+        panel.setBackground(WHITE_CLR); 
+
+        
+        // add button and labels to panel
+        panel.add(usernameLabel);
+        panel.add(usernameField);
+        panel.add(passwordLabel);
+        panel.add(passwordField);
+        panel.add(registerButton);
+        panel.add(backButton);
+
+        registrationFrame.add(panel);
+        registrationFrame.setVisible(true)
+
 
         
     }
