@@ -9,6 +9,12 @@ public class OnlineExamSystem {
     private static List<String> studentUsernames = new ArrayList<>();
     private static List<String> studentPasswords = new ArrayList<>();
     
+    private static final Color PRIMARY_CLR1 = new Color(0x143f40); 
+    private static final Color PRIMARY_CLR2 = new Color(0xe0bb68);
+    private static final Color WHITE_CLR = new Color(0xffffff);
+    private static final Color DARK_CLR = new Color(0x111a19);
+
+
 
     // Initialize the question bank with sample questions
     private static void initializeQuestionBank() {
@@ -122,7 +128,7 @@ public class OnlineExamSystem {
         JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
         panel.setBackground(WHITE_CLR); 
 
-        
+
         // add button and labels to panel
         panel.add(usernameLabel);
         panel.add(usernameField);
