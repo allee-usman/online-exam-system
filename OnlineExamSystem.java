@@ -5,10 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OnlineExamSystem {
+<<<<<<< HEAD
     private static List<Question> questionBank = new ArrayList<>();private static List<String> studentUsernames = new ArrayList<>();
     private static List<String> studentPasswords = new ArrayList<>();
 
+=======
+    private static List<Question> questionBank = new ArrayList<>();
+    private static List<String> studentUsernames = new ArrayList<>();
+    private static List<String> studentPasswords = new ArrayList<>();
+>>>>>>> cd4cb1a1aaa744fb49e79c9b06ab7000b91f37b3
     
+    private static final Color PRIMARY_CLR1 = new Color(0x143f40); 
+    private static final Color PRIMARY_CLR2 = new Color(0xe0bb68);
+    private static final Color WHITE_CLR = new Color(0xffffff);
+    private static final Color DARK_CLR = new Color(0x111a19);
+
+
 
     // Initialize the question bank with sample questions
     private static void initializeQuestionBank() {
@@ -76,6 +88,68 @@ public class OnlineExamSystem {
         mainMenuFrame.setVisible(true);
 
     }
+    
+    private static void showRegistrationForm() {
+        JFrame registrationFrame = new JFrame("Student Registration");
+        registrationFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        registrationFrame.setSize(400, 300);
+        registrationFrame.getContentPane().setBackground(WHITE_CLR); // Set background color
+
+        JLabel usernameLabel = new JLabel("Username:");
+        JTextField usernameField = new JTextField();
+        JLabel passwordLabel = new JLabel("Password:");
+        JPasswordField passwordField = new JPasswordField();
+        JButton registerButton = new JButton("Register");
+        JButton backButton = new JButton("Back");
+
+        //button colors
+        registerButton.setBackground(PRIMARY_CLR2);
+        registerButton.setForeground(DARK_CLR);
+        backButton.setBackground(PRIMARY_CLR2);
+        backButton.setForeground(DARK_CLR);
+
+        registerButton.addActionListener(e -> {
+            String username = usernameField.getText();
+            String password = new String(passwordField.getPassword());
+
+            if (username.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(registrationFrame, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (studentUsernames.contains(username)) {
+                JOptionPane.showMessageDialog(registrationFrame, "Username already exists.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                studentUsernames.add(username);
+                studentPasswords.add(password);
+                JOptionPane.showMessageDialog(registrationFrame, "Registration successful!");
+                registrationFrame.dispose();
+                showMainMenu();
+            }
+        });
+
+        backButton.addActionListener(e -> {
+            registrationFrame.dispose();
+            showMainMenu();
+        });
+
+        
+        JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
+        panel.setBackground(WHITE_CLR); 
+
+
+        // add button and labels to panel
+        panel.add(usernameLabel);
+        panel.add(usernameField);
+        panel.add(passwordLabel);
+        panel.add(passwordField);
+        panel.add(registerButton);
+        panel.add(backButton);
+
+        registrationFrame.add(panel);
+        registrationFrame.setVisible(true)
+
+
+        
+    }
+
 
     private static void showExam() {
 
