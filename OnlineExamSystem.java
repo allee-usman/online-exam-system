@@ -90,6 +90,30 @@ public class OnlineExamSystem {
         JButton registerButton = new JButton("Register");
         JButton backButton = new JButton("Back");
 
+        //button colors
+        registerButton.setBackground(PRIMARY_CLR2);
+        registerButton.setForeground(DARK_CLR);
+        backButton.setBackground(PRIMARY_CLR2);
+        backButton.setForeground(DARK_CLR);
+
+        registerButton.addActionListener(e -> {
+            String username = usernameField.getText();
+            String password = new String(passwordField.getPassword());
+
+            if (username.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(registrationFrame, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (studentUsernames.contains(username)) {
+                JOptionPane.showMessageDialog(registrationFrame, "Username already exists.", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                studentUsernames.add(username);
+                studentPasswords.add(password);
+                JOptionPane.showMessageDialog(registrationFrame, "Registration successful!");
+                registrationFrame.dispose();
+                showMainMenu();
+            }
+        });
+
+
         
     }
 
